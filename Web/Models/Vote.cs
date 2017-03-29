@@ -9,6 +9,7 @@ namespace Web.Models
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int VoteId { get; set; }
 
+    
     public string Comments { get; set; }
 
     [ForeignKey("UserId")]

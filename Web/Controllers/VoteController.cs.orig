@@ -1,0 +1,69 @@
+﻿using System.Data.SqlClient;
+using System.Net;
+using System.Net.Http;
+using System.Web.Configuration;
+using System.Web.Http;
+using Web.Models;
+
+namespace Web.Controllers
+{
+  public class VoteController : ApiController
+  {
+<<<<<<< HEAD
+        private SupercarModelContext db = new SupercarModelContext();
+
+        // POST api/Vote
+      public HttpResponseMessage Post([FromBody] Vote vote)
+=======
+    // POST api/Vote
+    public HttpResponseMessage Post(Vote vote)
+    {
+        if (!ModelState.IsValid)
+        {
+           //throw new BadRequestException();
+        }
+
+      if (!User.Identity.IsAuthenticated)
+>>>>>>> ed51017c7bbba8232d5d4be5f16e1f007da4040c
+      {
+          if (!User.Identity.IsAuthenticated)
+          {
+              return Request.CreateResponse(HttpStatusCode.Forbidden);
+          }
+
+<<<<<<< HEAD
+          //var connString = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+          //var sqlString = "INSERT INTO Vote(UserId, SupercarId, Comments) VALUES (" + vote.UserId + ", " +
+          //                vote.SupercarId + ", '" + vote.Comments + "')";
+
+          //using (var conn = new SqlConnection(connString))
+          //{
+          //    var command = new SqlCommand(sqlString, conn);
+          //    command.Connection.Open();
+          //    command.ExecuteNonQuery();
+          //}
+=======
+      var connString = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+      //var sqlString = "INSERT INTO Vote(UserId, SupercarId, Comments) VALUES (" + vote.UserId + ", " + vote.SupercarId + ", '" + vote.Comments + "')";
+
+      using (var conn = new SqlConnection(connString))
+      {
+        //var command = new SqlCommand(sqlString, conn);
+        //command.Connection.Open();
+        //command.ExecuteNonQuery();
+      }
+>>>>>>> ed51017c7bbba8232d5d4be5f16e1f007da4040c
+
+          db.Votes.Add(new Vote()
+          {
+              UserId = vote.UserId,
+              SupercarId = vote.SupercarId,
+              Comments = vote.Comments
+          });
+
+          db.SaveChanges();
+
+          return Request.CreateResponse(HttpStatusCode.Created);
+      }
+  }
+}
