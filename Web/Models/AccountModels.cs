@@ -29,7 +29,7 @@ namespace Web.Models
   public class LocalPasswordModel
   {
     [Required]
-    [StringLength(10, ErrorMessage = "The password cannot be longer than 10 characters.")]
+    [MinLength(14, ErrorMessage = "14 characters minimum you fucking dweeb....")]
     [DataType(DataType.Password)]
     [Display(Name = "New password")]
     public string NewPassword { get; set; }
@@ -85,9 +85,9 @@ namespace Web.Models
     public string LastName { get; set; }
 
     [Required]
-    [StringLength(10, ErrorMessage = "The password cannot be longer than 10 characters.")]
-    [DataType(DataType.Password)]
-    [RegularExpression(@"^([a-zA-Z0-9]+)$", ErrorMessage = "The password cannot contain special characters.")]
+        [MinLength(14, ErrorMessage = "14 characters minimum you fucking dweeb....")]
+        [DataType(DataType.Password)]
+    [RegularExpression(@"^(?=.*[A-Z].*)(?=.*[!@#$&*].*)(?=.*[0-9].*)(?=.*[a-z].*).{14,}$", ErrorMessage = "The password must contain a lower case, upper case, digit and special char from !@#$&*\"")]
     [Display(Name = "Password")]
     public string Password { get; set; }
 
