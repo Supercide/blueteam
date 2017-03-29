@@ -31,6 +31,7 @@ namespace Web.Controllers
     // POST: /Account/Login
     [HttpPost]
     [AllowAnonymous]
+    [ValidateAntiForgeryToken]
     public ActionResult Login(LoginModel model, string returnUrl)
     {
       if (ModelState.IsValid && WebSecurity.Login(model.Email, model.Password, true))
@@ -167,6 +168,7 @@ namespace Web.Controllers
     //
     // POST: /Account/ChangePassword
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public ActionResult ChangePassword(LocalPasswordModel model)
     {
       ViewBag.ReturnUrl = Url.Action("ChangePassword");
