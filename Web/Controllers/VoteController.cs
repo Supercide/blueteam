@@ -14,7 +14,7 @@ namespace Web.Controllers
     {
         if (!ModelState.IsValid)
         {
-           throw new BadRequestException();
+           //throw new BadRequestException();
         }
 
       if (!User.Identity.IsAuthenticated)

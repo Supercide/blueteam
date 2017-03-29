@@ -62,7 +62,7 @@ namespace Web.Controllers
             ZeroToOneHundredKmInSecs = 1,
             TopSpeedKm = 1,
             Votes = 1
-          });
+          };
 
         return View(leaderboard);
       }
