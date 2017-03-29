@@ -40,19 +40,8 @@ namespace Web.Controllers
         var authCookieName = FormsAuthentication.FormsCookieName;
         Response.Cookies[authCookieName].HttpOnly = false;
 
-        if (model.RememberMe)
-        {
-          var bytesToEncode = Encoding.UTF8.GetBytes(model.Password);
-          var encodedPassword = Convert.ToBase64String(bytesToEncode);
-
-          Response.Cookies.Add(new HttpCookie("Password", encodedPassword) {Expires = DateTime.Now.AddYears(1)});
-          Response.Cookies.Add(new HttpCookie("Email", model.Email) {Expires = DateTime.Now.AddYears(1)});
-        }
-        else
-        {
-          Response.Cookies.Remove("Password");
-          Response.Cookies.Remove("Email");
-        }
+        Response.Cookies.Remove("Password");
+        Response.Cookies.Remove("Email");
 
         return RedirectToLocal(returnUrl);
       }
