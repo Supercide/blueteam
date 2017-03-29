@@ -1,8 +1,10 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
 using System.Net;
 using System.Net.Http;
 using System.Web.Configuration;
 using System.Web.Http;
+using Microsoft.Ajax.Utilities;
 using Web.Models;
 
 namespace Web.Controllers
@@ -12,8 +14,12 @@ namespace Web.Controllers
         private SupercarModelContext db = new SupercarModelContext();
 
         // POST api/Vote
-      public HttpResponseMessage Post([FromBody] Vote vote)
+      public HttpResponseMessage Post(Vote vote)
       {
+          if (!ModelState.IsValid)
+          {
+              throw new Exception();
+          }
           if (!User.Identity.IsAuthenticated)
           {
               return Request.CreateResponse(HttpStatusCode.Forbidden);
