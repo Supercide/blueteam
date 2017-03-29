@@ -10,8 +10,13 @@ namespace Web.Controllers
   public class VoteController : ApiController
   {
     // POST api/Vote
-    public HttpResponseMessage Post([FromBody]Vote vote)
+    public HttpResponseMessage Post(Vote vote)
     {
+        if (!ModelState.IsValid)
+        {
+           throw new BadRequestException();
+        }
+
       if (!User.Identity.IsAuthenticated)
       {
         return Request.CreateResponse(HttpStatusCode.Forbidden);
