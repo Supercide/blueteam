@@ -15,6 +15,7 @@
 @using (Html.BeginForm("UserProfile", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
 {
   @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
   <fieldset>
     <legend>Edit your profile.</legend>
     <div class="control-group">
