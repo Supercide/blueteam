@@ -58,21 +58,16 @@ namespace Web.Controllers
               supercars.Reverse();
           }
 
-          if (orderBy == "votes")
-          {
-              supercars = supercars.OrderByDescending(s => s.Votes.Count()).ToList();
-          }
-
           var leaderboard = supercars.Select(s => new Leaderboard
           {
-            SupercarId = 1,
-            Make = "",
-            Model = "",
-            PowerKw = 1,
-            TorqueNm = 1,
-            ZeroToOneHundredKmInSecs = 1,
-            TopSpeedKm = 1,
-            Votes = 1
+            SupercarId = s.SupercarId,
+            Make = s.Make.ToString(),
+            Model = s.Model,
+            PowerKw = s.PowerKw,
+            TorqueNm = s.TorqueNm,
+            ZeroToOneHundredKmInSecs = s.ZeroToOneHundredKmInSecs,
+            TopSpeedKm = s.TopSpeedKm,
+            Votes = s.Votes.Count
           });
 
         return View(leaderboard);
