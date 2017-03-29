@@ -13,7 +13,9 @@ namespace Web.Controllers
     public ActionResult Index(int id, string orderBy = "SupercarId")
     {
       var make = db.Makes.Single(m => m.MakeId == id);
-      var supercars = db.Supercars.SqlQuery("SELECT * FROM Supercar WHERE MakeID = " + id + " ORDER BY " + orderBy);
+
+      var supercars = db.Supercars.Select(x => x.MakeId == id).OrderByField(orderBy, true).ToList();
+      //var supercars = db.Supercars.SqlQuery("SELECT * FROM Supercar WHERE MakeID = " + id + " ORDER BY " + orderBy);
       
       ViewBag.Make = make.Name;
       ViewBag.MakeId = make.MakeId;
