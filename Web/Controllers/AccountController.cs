@@ -70,6 +70,7 @@ namespace Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
         {
             if (ModelState.IsValid)
