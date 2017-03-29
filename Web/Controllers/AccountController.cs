@@ -167,6 +167,7 @@ namespace Web.Controllers
     //
     // POST: /Account/ChangePassword
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public ActionResult ChangePassword(LocalPasswordModel model)
     {
       ViewBag.ReturnUrl = Url.Action("ChangePassword");
