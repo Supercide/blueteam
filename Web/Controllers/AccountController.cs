@@ -59,7 +59,7 @@ namespace Web.Controllers
 
     //
     // GET: /Account/Register
-    //[AllowAnonymous]
+    [AllowAnonymous]
     public ActionResult Register()
     {
       return View();
@@ -68,8 +68,8 @@ namespace Web.Controllers
     //
     // POST: /Account/Register
     [HttpPost]
-    //[AllowAnonymous]
-    [ValidateInput(true)]
+    [AllowAnonymous]
+    [ValidateInput(false)]
     public ActionResult Register(RegisterModel model)
     {
       if (ModelState.IsValid)
