@@ -18,13 +18,13 @@ namespace Web.Controllers
       }
 
       var connString = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-      var sqlString = "INSERT INTO Vote(UserId, SupercarId, Comments) VALUES (" + vote.UserId + ", " + vote.SupercarId + ", '" + vote.Comments + "')";
+      //var sqlString = "INSERT INTO Vote(UserId, SupercarId, Comments) VALUES (" + vote.UserId + ", " + vote.SupercarId + ", '" + vote.Comments + "')";
 
       using (var conn = new SqlConnection(connString))
       {
-        var command = new SqlCommand(sqlString, conn);
-        command.Connection.Open();
-        command.ExecuteNonQuery();
+        //var command = new SqlCommand(sqlString, conn);
+        //command.Connection.Open();
+        //command.ExecuteNonQuery();
       }
 
       return Request.CreateResponse(HttpStatusCode.Created);
