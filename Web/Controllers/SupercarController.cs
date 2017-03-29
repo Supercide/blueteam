@@ -45,23 +45,23 @@ namespace Web.Controllers
     {
       try
       {
-        var supercars = db.Supercars.SqlQuery("SELECT * FROM Supercar ORDER BY " + (orderBy == "votes" ? "SupercarId" : orderBy) +(asc ? " ASC" : " DESC")).ToList();
+        //var supercars = db.Supercars.SqlQuery("SELECT * FROM Supercar ORDER BY " + (orderBy == "votes" ? "SupercarId" : orderBy) +(asc ? " ASC" : " DESC")).ToList();
 
         if (orderBy == "votes")
         {
-          supercars = supercars.OrderByDescending(s => s.Votes.Count()).ToList();
+          //supercars = supercars.OrderByDescending(s => s.Votes.Count()).ToList();
         }
 
-        var leaderboard = supercars.Select(s => new Leaderboard
+        var leaderboard = new Leaderboard
           {
-            SupercarId = s.SupercarId,
-            Make = s.Make.Name,
-            Model = s.Model,
-            PowerKw = s.PowerKw,
-            TorqueNm = s.TorqueNm,
-            ZeroToOneHundredKmInSecs = s.ZeroToOneHundredKmInSecs,
-            TopSpeedKm = s.TopSpeedKm,
-            Votes = s.Votes.Count()
+            SupercarId = 1,
+            Make = "",
+            Model = "",
+            PowerKw = 1,
+            TorqueNm = 1,
+            ZeroToOneHundredKmInSecs = 1,
+            TopSpeedKm = 1,
+            Votes = 1
           });
 
         return View(leaderboard);
