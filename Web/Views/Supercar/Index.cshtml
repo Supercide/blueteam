@@ -24,7 +24,7 @@
       }
       out of @ViewBag.TotalVotes total</h4>
     <div class="progress progress-success">
-      <div class="bar" id="voteBar" style="width: @((int)(Model.Votes.Count / ViewBag.TotalVotes * 100))%"></div>
+      <div class="bar" id="voteBar" style="width: @(ViewBag.TotalVotes == 0 ? 0 : (int)(Model.Votes.Count / ViewBag.TotalVotes * 100))%"></div>
     </div>
     @{ var enableVoting = false;}
     @if (!User.Identity.IsAuthenticated)
@@ -120,8 +120,8 @@
             @foreach (var vote in Model.Votes.Where(v => !string.IsNullOrEmpty(v.Comments)))
             {
               <tr>
-                <td>@Html.Raw(vote.User.FirstName) @Html.Raw(vote.User.LastName)</td>
-                <td>@Html.Raw(vote.Comments)</td>
+                <td>@Html.Encode(vote.User.FirstName) @Html.Encode(vote.User.LastName)</td>
+                <td>@Html.Encode(vote.Comments)</td>
               </tr>
               rank++;
             }
