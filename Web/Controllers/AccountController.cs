@@ -35,9 +35,8 @@ namespace Web.Controllers
     {
       if (ModelState.IsValid && WebSecurity.Login(model.Email, model.Password, true))
       {
-        // Change the auth cookie to remove the HttpOnly attribute
         var authCookieName = FormsAuthentication.FormsCookieName;
-        Response.Cookies[authCookieName].HttpOnly = false;
+        Response.Cookies[authCookieName].HttpOnly = true;
 
         Response.Cookies.Remove("Password");
         Response.Cookies.Remove("Email");
@@ -60,7 +59,7 @@ namespace Web.Controllers
 
     //
     // GET: /Account/Register
-    //[AllowAnonymous]
+    [AllowAnonymous]
     public ActionResult Register()
     {
       return View();
@@ -69,7 +68,7 @@ namespace Web.Controllers
     //
     // POST: /Account/Register
     [HttpPost]
-    //[AllowAnonymous]
+    [AllowAnonymous]
     [ValidateInput(false)]
     public ActionResult Register(RegisterModel model)
     {
