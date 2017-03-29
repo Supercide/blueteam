@@ -204,6 +204,7 @@ namespace Web.Controllers
         // GET: /Account/ResetPassword
         [HttpPost]
         [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult ResetPassword(PasswordResetModel model)
         {
             var userProfile = db.UserProfiles.SingleOrDefault(u => u.Email == model.Email);
