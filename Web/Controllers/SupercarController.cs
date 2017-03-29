@@ -47,7 +47,6 @@ namespace Web.Controllers
     {
       try
       {
-<<<<<<< HEAD
           var supercars = db.Supercars.Select(x => x).OrderByField(orderBy, asc).ToList();
           // var supercars = db.Supercars.SqlQuery("SELECT * FROM Supercar ORDER BY " + (orderBy == "votes" ? "SupercarId" : orderBy) +(asc ? " ASC" : " DESC")).ToList();
 
@@ -57,16 +56,6 @@ namespace Web.Controllers
           }
 
           var leaderboard = supercars.Select(s => new Leaderboard
-=======
-        //var supercars = db.Supercars.SqlQuery("SELECT * FROM Supercar ORDER BY " + (orderBy == "votes" ? "SupercarId" : orderBy) +(asc ? " ASC" : " DESC")).ToList();
-
-        if (orderBy == "votes")
-        {
-          //supercars = supercars.OrderByDescending(s => s.Votes.Count()).ToList();
-        }
-
-        var leaderboard = new Leaderboard
->>>>>>> ed51017c7bbba8232d5d4be5f16e1f007da4040c
           {
             SupercarId = 1,
             Make = "",
@@ -76,7 +65,7 @@ namespace Web.Controllers
             ZeroToOneHundredKmInSecs = 1,
             TopSpeedKm = 1,
             Votes = 1
-          };
+          });
 
         return View(leaderboard);
       }
