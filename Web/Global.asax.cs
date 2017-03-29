@@ -12,7 +12,7 @@ namespace Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
+            MvcHandler.DisableMvcResponseHeader = true;
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
