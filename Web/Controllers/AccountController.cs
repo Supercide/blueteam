@@ -31,7 +31,6 @@ namespace Web.Controllers
     // POST: /Account/Login
     [HttpPost]
     [AllowAnonymous]
-    [ValidateAntiForgeryToken]
     public ActionResult Login(LoginModel model, string returnUrl)
     {
       if (ModelState.IsValid && WebSecurity.Login(model.Email, model.Password, true))
@@ -103,8 +102,8 @@ namespace Web.Controllers
             {
               Subject = "Your new account has been created",
               Body = string.Format("Welcome {0}!<br /><br />" +
-                                   "Your new Supercar Showdown account has been created. Just so you don't forget it, your password is <strong>{1}</strong>",
-                                   model.FirstName, model.Password),
+                                   "Your new Supercar Showdown account has been created.",
+                                   model.FirstName),
               IsBodyHtml = true
             };
           message.To.Add(new MailAddress(model.Email));
